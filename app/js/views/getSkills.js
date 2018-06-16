@@ -1,5 +1,5 @@
-AppManager.Views.Page2 = Backbone.View.extend({
-  template: _.template($('#tpl-page2').html()),
+AppManager.Views.GetSkills = Backbone.View.extend({
+  template: _.template($('#tpl-get-skills').html()),
 
   render: function() {
     var html = this.template();

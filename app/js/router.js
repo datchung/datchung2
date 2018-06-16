@@ -1,8 +1,9 @@
 AppManager.Router = Backbone.Router.extend({
   routes: {
-    '': 'home',
-    'home': 'home',
-    'page1': 'showPage1',
-    'page2': 'showPage2'
+    '': 'showGetSkills',
+    'get-skills': 'showGetSkills',
+    'get-skills-return': 'showGetSkillsReturn',
+    'technical-list-return': 'showTechnicalListReturn',
+    'people-list-return': 'showPeopleListReturn'
   }
 });

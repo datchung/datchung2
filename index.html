@@ -4,31 +4,59 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Boilerplate</title>
+    <title>Dat Chung</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="app/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="app/css/main.css">
   </head>
   <body>
     <div class="container">
+      <div class="page-header">
+        <h1>Dat Chung</h1>
+        <p class="lead">Something something something something.</p>
+      </div>
+
       <div class="row">
         <div class="col-xs-12 main-container">
         </div>
       </div>
     </div>
 
-    <script type="text/template" id="tpl-home">
-        <h2>tpl-home</h2>
-        <a href="#page1">begin: page1</a>
+    <script type="text/template" id="tpl-get-skills">
+        <p>
+            <code>me.GetSkills();</code>
+            <a class="btn btn-default btn-xs" href="#get-skills-return" role="button">Run <span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
+        </p>
     </script>
 
-    <script type="text/template" id="tpl-page1">
-        <h2>tpl-page1</h2>
-        <a href="#page2">next: page2</a>
+    <script type="text/template" id="tpl-get-skills-return">
+        <p>
+            <code>me.GetSkills();</code>
+        </p>
+        <p>returned</p>
+<pre>IEnumerable&lt;Skills&gt; {
+    <a class="btn btn-default btn-xs" href="#technical-list-return" role="button">technical <span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>,
+    <a class="btn btn-default btn-xs" href="#people-list-return" role="button">people <span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
+}</pre>
+        <p><a href="#get-skills"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back</a></p>
     </script>
 
-    <script type="text/template" id="tpl-page2">
-        <h2>tpl-page2</h2>
-        <a href="#home">home</a>
+    <script type="text/template" id="tpl-technical-list-return">
+        <p>
+            <code>technical.List();</code>
+        </p>
+        <p>returned</p>
+<pre>todo</pre>
+        <p><a href="#get-skills-return"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back</a></p>
+    </script>
+
+    <script type="text/template" id="tpl-people-list-return">
+        <p>
+            <code>people.List();</code>
+        </p>
+        <p>returned</p>
+<pre>todo</pre>
+        <p><a href="#get-skills-return"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back</a></p>
     </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -38,9 +66,10 @@
     <script src="app/js/app.js"></script>
     <!-- <script src="app/js/models/.js"></script>
     <script src="app/js/collections/.js"></script> -->
-    <script src="app/js/views/home.js"></script>
-    <script src="app/js/views/page1.js"></script>
-    <script src="app/js/views/page2.js"></script>
+    <script src="app/js/views/getSkills.js"></script>
+    <script src="app/js/views/getSkillsReturn.js"></script>
+    <script src="app/js/views/technicalListReturn.js"></script>
+    <script src="app/js/views/peopleListReturn.js"></script>
     <script src="app/js/router.js"></script>
 
     <script>
