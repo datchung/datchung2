@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Boilerplate</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="app/css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 main-container">
+        </div>
+      </div>
+    </div>
+
+    <script type="text/template" id="tpl-home">
+        <h2>tpl-home</h2>
+        <a href="#page1">begin: page1</a>
+    </script>
+
+    <script type="text/template" id="tpl-page1">
+        <h2>tpl-page1</h2>
+        <a href="#page2">next: page2</a>
+    </script>
+
+    <script type="text/template" id="tpl-page2">
+        <h2>tpl-page2</h2>
+        <a href="#home">home</a>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
+
+    <script src="app/js/app.js"></script>
+    <!-- <script src="app/js/models/.js"></script>
+    <script src="app/js/collections/.js"></script> -->
+    <script src="app/js/views/home.js"></script>
+    <script src="app/js/views/page1.js"></script>
+    <script src="app/js/views/page2.js"></script>
+    <script src="app/js/router.js"></script>
+
+    <script>
+      $(function() {
+        AppManager.start();
+      });
+    </script>
+  </body>
+</html>
