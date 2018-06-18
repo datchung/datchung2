@@ -1,0 +1,20 @@
+body {
+    background-color: #000;
+    color: #ccc;
+    font-family: monospace;
+}
+
+.display-none {
+    display: none;
+}
+
+.blink {
+  animation: blinker 1s step-end infinite;
+  /*content: '|';*/
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
