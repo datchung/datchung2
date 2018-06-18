@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    console.log('ready');
-
     var DELAY_UNIT = 100;
     var DELAY_RESULT = DELAY_UNIT;
     var DELAY_RESPONSE = DELAY_UNIT;
@@ -13,18 +11,6 @@ $(document).ready(function() {
     ];
     var stepIndex = 0;
     var isTyping = false;
-
-    $('#get-skills .btn').click(function() {
-        console.log('get-skills');
-        $('#get-skills-return').removeClass('display-none');
-        $('#get-skills .btn').addClass('display-none');
-    });
-
-    $('#technical-btn').click(function() {
-        $('#technical-list-return').removeClass('display-none');
-        $('#technical-static').removeClass('display-none');
-        $('#technical-btn').addClass('display-none');
-    });
 
     var showStepResult = function(step, nextStep) {
         setTimeout(function() {
@@ -42,13 +28,11 @@ $(document).ready(function() {
     var animateCommandText = function(selector, text, delay) {
         var initialDelay = delay * 10;
 
-        setTimeout(function() {
-            var i = 0;
+        var chain = this.delay(function() {
             _.each(text, function(c) {
-                setTimeout(function() {
+                chain = chain.delay(function() {
                     $(selector).append(c);
-                }, delay * i);
-                ++i;
+                }, delay);
             });
         }, initialDelay);
     };
@@ -89,7 +73,8 @@ $(document).ready(function() {
         animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_UNIT);
         setTimeout(function() {
             isTyping = false;
-            // ++stepIndex;
+            var currentStep = steps[stepIndex];
+            // $(currentStep.id + ' button.blink').removeClass('display-none');
         }, DELAY_UNIT * currentStep.text.length - 1);
     };
 
