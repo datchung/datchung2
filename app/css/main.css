@@ -12,17 +12,37 @@ pre {
     color: #ccc;
 }
 
+button {
+    color: #000;
+}
+
 .display-none {
     display: none;
 }
 
 .blink {
-  animation: blinker 1s step-end infinite;
-  /*content: '|';*/
+    animation: blinker 1s step-end infinite;
+    /*content: '|';*/
+}
+
+.pulse {
+    animation: pulse 2s infinite;
 }
 
 @keyframes blinker {
-  50% {
-    opacity: 0;
-  }
+    50% {
+      opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        background-color: #ccc;
+    }
+    50% {
+        background-color: #333;
+    }
+    100% {
+        background-color: #ccc;
+    }
 }

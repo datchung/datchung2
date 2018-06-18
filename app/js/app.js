@@ -76,7 +76,7 @@ $(document).ready(function() {
         chain.delay(function() {
             isTyping = false;
             var currentStep = steps[stepIndex];
-            // $(currentStep.id + ' button.blink').removeClass('display-none');
+            $(currentStep.id + ' button.pulse').removeClass('display-none');
         }, DELAY_UNIT);
     };
 
