@@ -17,7 +17,6 @@ $(document).ready(function() {
             $(step.id + ' .blink').addClass('display-none');
             // TODO: animate line by line with 1 sec/line delay?
             $(step.id + '-return').removeClass('display-none');
-            // if(nextStep) $(nextStep.id).removeClass('display-none');
         }, DELAY_UNIT);
 
         return chain.delay(function() {

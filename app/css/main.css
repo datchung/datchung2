@@ -4,6 +4,14 @@ body {
     font-family: monospace;
 }
 
+pre {
+    border: 0;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #000;
+    color: #ccc;
+}
+
 .display-none {
     display: none;
 }
