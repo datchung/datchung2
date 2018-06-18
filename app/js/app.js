@@ -25,18 +25,22 @@ $(document).ready(function() {
         }, DELAY_RESPONSE);
     };
 
+    var animateCommandChar = function(selector, text, delay, i, chain) {
+        return chain.delay(function() {
+            $(selector).append(text.charAt(i));
+        }, delay);
+    };
+
     var animateCommandText = function(selector, text, delay) {
         var initialDelay = delay * 10;
 
-        var chain = this.delay(function() {
-            _.each(text, function(c) {
-                chain = chain.delay(function() {
-                    $(selector).append(c);
-                }, delay);
-            });
-        }, initialDelay);
+        var chain = this.delay(function() {}, initialDelay);
 
-        // return chain;
+        for(var i = 0; i < text.length; ++i) {
+            chain = animateCommandChar(selector, text, delay, i, chain);
+        }
+
+        return chain;
     };
 
     $("body").keypress(function(e) {
@@ -45,7 +49,6 @@ $(document).ready(function() {
         if(isTyping) return;
         if(stepIndex > steps.length - 1) return;
         e.preventDefault();
-        // runCurrentStep();
 
         var currentStep = steps[stepIndex];
         isTyping = true;
@@ -56,10 +59,10 @@ $(document).ready(function() {
 
         if(stepIndex < steps.length) {
             currentStep = steps[stepIndex];
-            animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_UNIT);
-            setTimeout(function() {
+            var chain = animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_UNIT);
+            chain.delay(function() {
                 isTyping = false;
-            }, DELAY_UNIT * currentStep.text.length - 1);
+            }, DELAY_UNIT);
         }
         else if(stepIndex === steps.length) {
             // Last step, restart
@@ -68,16 +71,14 @@ $(document).ready(function() {
     });
 
     var init = function() {
-        // runCurrentStep(true);
-
         var currentStep = steps[stepIndex];
         isTyping = true;
-        animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_UNIT);
-        setTimeout(function() {
+        var chain = animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_UNIT);
+        chain.delay(function() {
             isTyping = false;
             var currentStep = steps[stepIndex];
             // $(currentStep.id + ' button.blink').removeClass('display-none');
-        }, DELAY_UNIT * currentStep.text.length - 1);
+        }, DELAY_UNIT);
     };
 
     init();
