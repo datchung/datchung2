@@ -13,14 +13,14 @@ $(document).ready(function() {
     var isTyping = false;
 
     var showStepResult = function(step, nextStep) {
-        setTimeout(function() {
+        var chain = this.delay(function() {
             $(step.id + ' .blink').addClass('display-none');
             // TODO: animate line by line with 1 sec/line delay?
             $(step.id + '-return').removeClass('display-none');
             // if(nextStep) $(nextStep.id).removeClass('display-none');
         }, DELAY_UNIT);
 
-        setTimeout(function() {
+        return chain.delay(function() {
             if(nextStep) $(nextStep.id).removeClass('display-none');
         }, DELAY_RESPONSE);
     };
@@ -35,6 +35,8 @@ $(document).ready(function() {
                 }, delay);
             });
         }, initialDelay);
+
+        // return chain;
     };
 
     $("body").keypress(function(e) {
