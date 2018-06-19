@@ -15,6 +15,7 @@ $(document).ready(function() {
     var showStepResult = function(step, nextStep) {
         var chain = this.delay(function() {
             $(step.id + ' .blink').addClass('display-none');
+            $(step.id + ' button.pulse').addClass('display-none');
             // TODO: animate line by line with 1 sec/line delay?
             $(step.id + '-return').removeClass('display-none');
         }, DELAY_UNIT);
@@ -42,13 +43,7 @@ $(document).ready(function() {
         return chain;
     };
 
-    $("body").keypress(function(e) {
-        // Only proceed if ENTER was pressed
-        if(event.which !== 13) return;
-        if(isTyping) return;
-        if(stepIndex > steps.length - 1) return;
-        e.preventDefault();
-
+    var doStep = function() {
         var currentStep = steps[stepIndex];
         isTyping = true;
         showStepResult(currentStep,
@@ -61,12 +56,28 @@ $(document).ready(function() {
             var chain = animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_UNIT);
             chain.delay(function() {
                 isTyping = false;
+                var currentStep = steps[stepIndex];
+                $(currentStep.id + ' button.pulse').removeClass('display-none');
             }, DELAY_UNIT);
         }
         else if(stepIndex === steps.length) {
             // Last step, restart
             window.location.reload(false);
         }
+    };
+
+    $("body").keypress(function(e) {
+        // Only proceed if ENTER was pressed
+        if(event.which !== 13) return;
+        if(isTyping) return;
+        if(stepIndex > steps.length - 1) return;
+        e.preventDefault();
+
+        doStep();
+    });
+
+    $('button.pulse').click(function() {
+        doStep();
     });
 
     var init = function() {
