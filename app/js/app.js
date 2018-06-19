@@ -1,7 +1,13 @@
 $(document).ready(function() {
     var DELAY_UNIT = 100;
-    var DELAY_RESULT = DELAY_UNIT;
+    // Delay of typing effect
+    var DELAY_TYPE = DELAY_UNIT;
+    // Delay of response after command is entered (eg. hide cursor)
     var DELAY_RESPONSE = DELAY_UNIT;
+    // Delay before result is displayed
+    var DELAY_RESULT = DELAY_UNIT * 4;
+    // Delay before next step is displayed
+    var DELAY_NEXT_STEP = DELAY_UNIT * 15;
 
     var steps = [
         { id: '#get-skills', text: 'me.GetSkills();' },
@@ -16,13 +22,16 @@ $(document).ready(function() {
         var chain = this.delay(function() {
             $(step.id + ' .blink').addClass('display-none');
             $(step.id + ' button.pulse').addClass('display-none');
+        }, DELAY_RESPONSE);
+
+        chain = chain.delay(function() {
             // TODO: animate line by line with 1 sec/line delay?
             $(step.id + '-return').removeClass('display-none');
-        }, DELAY_UNIT);
+        }, DELAY_RESULT);
 
         return chain.delay(function() {
             if(nextStep) $(nextStep.id).removeClass('display-none');
-        }, DELAY_RESPONSE);
+        }, DELAY_NEXT_STEP);
     };
 
     var animateCommandChar = function(selector, text, delay, i, chain) {
@@ -31,10 +40,12 @@ $(document).ready(function() {
         }, delay);
     };
 
-    var animateCommandText = function(selector, text, delay) {
+    var animateCommandText = function(selector, text, delay, chain) {
+        // TODO: DELAY_BEFORE_TYPE
         var initialDelay = delay * 10;
+        if(!chain) chain = this;
 
-        var chain = this.delay(function() {}, initialDelay);
+        chain = chain.delay(function() {}, initialDelay);
 
         for(var i = 0; i < text.length; ++i) {
             chain = animateCommandChar(selector, text, delay, i, chain);
@@ -46,19 +57,19 @@ $(document).ready(function() {
     var doStep = function() {
         var currentStep = steps[stepIndex];
         isTyping = true;
-        showStepResult(currentStep,
-            stepIndex < steps.length - 1 ? steps[stepIndex + 1] : null,
-            DELAY_RESPONSE);
+        var chain = showStepResult(currentStep,
+            stepIndex < steps.length - 1 ? steps[stepIndex + 1] : null);
         ++stepIndex;
 
         if(stepIndex < steps.length) {
             currentStep = steps[stepIndex];
-            var chain = animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_UNIT);
+            // TODO pass chain into animateCommandText()
+            chain = animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_TYPE, chain);
             chain.delay(function() {
                 isTyping = false;
                 var currentStep = steps[stepIndex];
                 $(currentStep.id + ' button.pulse').removeClass('display-none');
-            }, DELAY_UNIT);
+            }, DELAY_TYPE);
         }
         else if(stepIndex === steps.length) {
             // Last step, restart
@@ -83,12 +94,12 @@ $(document).ready(function() {
     var init = function() {
         var currentStep = steps[stepIndex];
         isTyping = true;
-        var chain = animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_UNIT);
+        var chain = animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_TYPE);
         chain.delay(function() {
             isTyping = false;
             var currentStep = steps[stepIndex];
             $(currentStep.id + ' button.pulse').removeClass('display-none');
-        }, DELAY_UNIT);
+        }, DELAY_TYPE);
     };
 
     init();
