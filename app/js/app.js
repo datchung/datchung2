@@ -63,7 +63,6 @@ $(document).ready(function() {
 
         if(stepIndex < steps.length) {
             currentStep = steps[stepIndex];
-            // TODO pass chain into animateCommandText()
             chain = animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_TYPE, chain);
             chain.delay(function() {
                 isTyping = false;
