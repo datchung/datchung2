@@ -34,6 +34,8 @@ $(document).ready(function() {
             $(step.id + '-return').removeClass('display-none');
         }, DELAY_RESULT);
 
+        chain = chain = chain.delay(scrollToBottom, 0);
+
         return chain.delay(function() {
             if(nextStep) $(nextStep.id).removeClass('display-none');
         }, DELAY_NEXT_STEP);
@@ -65,7 +67,6 @@ $(document).ready(function() {
         var chain = showStepResult(currentStep,
             stepIndex < steps.length - 1 ? steps[stepIndex + 1] : null);
         ++stepIndex;
-        chain = chain.delay(scrollToBottom, 0);
 
         if(stepIndex < steps.length) {
             currentStep = steps[stepIndex];
