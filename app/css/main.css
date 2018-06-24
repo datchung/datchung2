@@ -2,6 +2,7 @@ body {
     background-color: #000;
     color: #ccc;
     font-family: monospace;
+    margin-bottom: 45px;
 }
 
 pre {

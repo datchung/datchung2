@@ -18,6 +18,11 @@ $(document).ready(function() {
     var stepIndex = 0;
     var isTyping = false;
 
+    // https://stackoverflow.com/a/11715670
+    var scrollToBottom = function() {
+        window.scrollTo(0, document.body.scrollHeight);
+    };
+
     var showStepResult = function(step, nextStep) {
         var chain = this.delay(function() {
             $(step.id + ' .blink').addClass('display-none');
@@ -60,15 +65,17 @@ $(document).ready(function() {
         var chain = showStepResult(currentStep,
             stepIndex < steps.length - 1 ? steps[stepIndex + 1] : null);
         ++stepIndex;
+        chain = chain.delay(scrollToBottom, 0);
 
         if(stepIndex < steps.length) {
             currentStep = steps[stepIndex];
             chain = animateCommandText(currentStep.id + ' .command', currentStep.text, DELAY_TYPE, chain);
-            chain.delay(function() {
+            chain = chain.delay(function() {
                 isTyping = false;
                 var currentStep = steps[stepIndex];
                 $(currentStep.id + ' button.pulse').removeClass('display-none');
             }, DELAY_TYPE);
+            return chain;
         }
         else if(stepIndex === steps.length) {
             // Last step, restart
