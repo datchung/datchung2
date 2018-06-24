@@ -11,8 +11,8 @@ $(document).ready(function() {
 
     var steps = [
         { id: '#get-skills', text: 'me.GetSkills();' },
-        { id: '#technical-list', text: 'technical.List();' },
         { id: '#people-list', text: 'people.List();' },
+        { id: '#technical-list', text: 'technical.List();' },
         { id: '#start-over', text: 'startOver();' }
     ];
     var stepIndex = 0;
