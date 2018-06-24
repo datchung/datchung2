@@ -16,6 +16,30 @@ button {
     color: #000;
 }
 
+.command {
+    color: #66D9EF;
+}
+
+.command-result pre {
+    color: #FD971F !important;
+}
+
+.black {
+    color: #272822;
+}
+.fuschia {
+    color: #F92672;
+}
+.cyan {
+    color: #66D9EF;
+}
+.green {
+    color: #A6E22E;
+}
+.orange {
+    color: #FD971F;
+}
+
 .display-none {
     display: none;
 }
