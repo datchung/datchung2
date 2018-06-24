@@ -21,6 +21,11 @@ button {
     background-color: #42433E;
     color: #fff;
 }
+@media (max-width: 500px) {
+    .css-responsive-menu ul.navigation-list {
+       background-color: #42433E;
+    }
+}
 
 .command {
     color: #66D9EF;
