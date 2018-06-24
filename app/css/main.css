@@ -1,6 +1,6 @@
 body {
-    background-color: #000;
-    color: #ccc;
+    background-color: #272822;
+    color: #fff;
     font-family: monospace;
     margin-bottom: 45px;
 }
@@ -9,12 +9,17 @@ pre {
     border: 0;
     padding-left: 0;
     padding-right: 0;
-    background-color: #000;
-    color: #ccc;
+    background-color: #272822;
+    color: #fff;
 }
 
 button {
-    color: #000;
+    color: #272822;
+}
+
+.menu-filler, .css-responsive-menu, a, a:hover, a:visited {
+    background-color: #42433E;
+    color: #fff;
 }
 
 .command {
