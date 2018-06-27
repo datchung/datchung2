@@ -17,6 +17,10 @@ button {
     color: #272822;
 }
 
+.navigation-list img {
+    height: 21px;
+}
+
 .menu-filler, .css-responsive-menu, a, a:hover, a:visited {
     background-color: #42433E;
     color: #fff;
@@ -24,6 +28,9 @@ button {
 @media (max-width: 500px) {
     .css-responsive-menu ul.navigation-list {
        background-color: #42433E;
+    }
+    #github-icon {
+        margin-right: 10px;
     }
 }
 
