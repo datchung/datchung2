@@ -49,7 +49,10 @@ button {
        background-color: #42433E;
     }
     #github-icon {
-        margin-right: 10px;
+        margin-right: 12px;
+    }
+    #google-play-icon {
+        margin-right: 8px;
     }
 }
 
