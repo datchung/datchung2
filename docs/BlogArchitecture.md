@@ -29,6 +29,6 @@ Post content will be written in markdown and interpretted by a Javascript librar
 
 Embedded Twitter feed with a unique hash tag per post.
 
-## Hosting
+### Hosting
 
 Blog post and posts shall be hosted in a Github repository.
