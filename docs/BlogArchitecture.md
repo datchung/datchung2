@@ -14,9 +14,21 @@ Writing a blog will force me to organize my thoughts in an understandable manner
 
 The blog post should have the following features:
 
-* Each blog post should have a title, content, tags, and comments
+* Each blog post should have a title, date authored, content, tags, and comments
+* Blog posts should be displayed in order of most recent to least recent
+* There shall be a list of posts with links to individual posts
+* Posts may contain words, pictures and code 
 
 ## How
 
+### Post Content
 
+Post content will be written in markdown and interpretted by a Javascript library.
 
+### Post Comments
+
+Embedded Twitter feed with a unique hash tag per post.
+
+## Hosting
+
+Blog post and posts shall be hosted in a Github repository.
